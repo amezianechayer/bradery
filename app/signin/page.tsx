@@ -1,11 +1,12 @@
 import React from "react";
+import Signinform from "./signinform";
 
 type Props = {}
 
 const page = (props: Props) => {
     return (
-        <div>page</div>
-    )
+        <Signinform />
+        )
 }
 
 export default page 
