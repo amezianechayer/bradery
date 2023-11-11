@@ -6,6 +6,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
 import Size from "../components/Size";
+import Color from "../components/Color";
 
 type Props = {}
 
@@ -32,6 +33,16 @@ const Productform = (props: Props) => {
         setFormData({
             ...formData,
             [name]:value
+        })
+    }
+    const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.name ==="price" ? parseInt(e.target.value):parseInt(e.target.value)
+        const inventory = e.target.name ==="inventory" ? parseInt(e.target.value):parseInt(e.target.value)
+        setFormData({
+            ...formData,
+            [e.target.name] : value,
+            [e.target.name] : inventory,
+
         })
     }
     
@@ -93,6 +104,39 @@ const Productform = (props: Props) => {
                             onChange={handleChange}
                             />
                                 <Size setFormData={setFormData}/>
+                    </div>
+                    <div>
+                        <label htmlFor="inventory" className="font-medium">Inventory</label>
+                        <input 
+                            type="number"
+                            className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
+                            name="inventory"
+                            value={formData.inventory}
+                            onChange={handlePriceChange}
+                            />
+                    </div>
+                    <div>
+                        <label htmlFor="price" className="font-medium">Price</label>
+                        <input 
+                            type="number"
+                            className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
+                            name="price"
+                            value={formData.price}
+                            onChange={handlePriceChange}
+                            />
+                    </div>
+                    <div>
+                        <div>
+                            <label htmlFor="color" className="font-medium">Color</label>
+                            <input 
+                                type="text"
+                                className="w-full h-[50px] border-[1px] rounded-lg focus:border-pink-500 px-3 focus:border-2 outline-none"
+                                name="color"
+                                value={formData.color} 
+                                onChange={handleChange}
+                                />
+                        </div>
+                        <Color setFormData={setFormData} Color={formData.color}/>
                     </div>
                 </div>
             </div>
