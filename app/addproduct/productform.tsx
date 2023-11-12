@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar";
 import { useRouter } from "next/navigation";
 import Size from "../components/Size";
 import Color from "../components/Color";
+import Para from "../components/Para";
+import ImageUpload from "../components/ImageUpload";
 
 type Props = {}
 
@@ -28,6 +30,10 @@ const Productform = (props: Props) => {
         store:''
     })
 
+    const [Description, setDescription] = useState<string>('')
+    const [info, updateinfo] = useState<any>()
+    const [imageUrls, setImageUrls] = useState<string[]>([])
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target
         setFormData({
@@ -45,6 +51,29 @@ const Productform = (props: Props) => {
 
         })
     }
+    const handleImageChange = () => {
+        const stringimages = JSON.stringify(imageUrls)
+        setFormData({
+            ...formData,
+            images:stringimages,
+            description: Description,
+            userId:id
+        })
+    }
+
+    useEffect(() => {
+        console.log(formData.images)
+        console.log(formData)
+    }, [formData])
+
+    useEffect(() => {
+        setFormData((prevFormData) =>({
+            ...prevFormData,
+            description:Description,
+            images:imageUrls.toString(),
+            userId:id
+        }))
+    }, [imageUrls])
     
     return (
         <div className="px-5 max-max-w-[1280px] mx-auto mb-10">
@@ -139,6 +168,11 @@ const Productform = (props: Props) => {
                         <Color setFormData={setFormData} Color={formData.color}/>
                     </div>
                 </div>
+                <label htmlFor="" className="mt-10 inline-block font-medium">Description about your product</label>
+                <Para setDescription={setDescription} description={formData.description}/>
+                <label htmlFor="" className="mt-10 inline-block font-medium">Upload Images</label>
+                <ImageUpload info={info} updateInfo={updateinfo} imageUrls={imageUrls} setImageUrls={setImageUrls} handleImageChange={handleImageChange} />
+
             </div>
         </div>
     ) 
