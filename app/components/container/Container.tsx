@@ -8,9 +8,9 @@ type Props = {}
 const Container = (props: Props) => {
 
   return (
-    <div>
+    <div className="mb-[200px] ">
       <div className="flex">
-        <Link href="/filters" className="opacity-50">
+        <Link href="/filters" className="opacity-60">
           <div>
             <Filter />
           </div>
