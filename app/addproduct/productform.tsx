@@ -74,6 +74,17 @@ const Productform = (props: Props) => {
             userId:id
         }))
     }, [imageUrls])
+
+    const postData = async () => {
+        handleImageChange()
+        try{
+            const response = await axios.post('/api/addproduct', formData)
+            router.push('/')
+            console.log(response)
+        }catch(error){
+            console.log(error)
+        }
+    }
     
     return (
         <div className="px-5 max-max-w-[1280px] mx-auto mb-10">
@@ -170,9 +181,9 @@ const Productform = (props: Props) => {
                 </div>
                 <label htmlFor="" className="mt-10 inline-block font-medium">Description about your product</label>
                 <Para setDescription={setDescription} description={formData.description}/>
-                <label htmlFor="" className="mt-10 inline-block font-medium">Upload Images</label>
+                <label htmlFor="" className="mt-10 inline-block font-medium">Upload Images</label>     
                 <ImageUpload info={info} updateInfo={updateinfo} imageUrls={imageUrls} setImageUrls={setImageUrls} handleImageChange={handleImageChange} />
-
+                <button onClick={postData} className="text-white mt-10 border-[1px] bg-purple-500 rounded-lg px-5 p-2">Submit</button>
             </div>
         </div>
     ) 
