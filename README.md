@@ -8,6 +8,8 @@
 
 4. Configurer Stripe avec Webhook en installant stripe cli pour générer la clé
 
+5. Pour la Database c'est npx prisma db push et npx prisma generate et pour visualiser les tables c'est npx prisma studio
+
 
 ## Getting Started
 
