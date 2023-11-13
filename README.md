@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Prisma
+
+1. Copiez le fichier `.env.example` en tant que `.env` et configurez les variables d'environnement nécessaires pour Prisma, PlanetScale et Stripe.
+
+2. Assurez-vous que votre base de données PlanetScale est configurée correctement dans le fichier `.env`.
+
+3. configurer aussi le preset de cloudinary dans app/components/ImageUpload ligne 29 
+
+4. Configurer Stripe avec Webhook en installant stripe cli pour générer la clé
+
 
 ## Getting Started
 
